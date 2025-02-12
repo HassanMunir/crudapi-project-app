@@ -71,8 +71,8 @@ jobs:
 
       - name: Image Tags
         run: |
-          echo "IMAGE_TAG=ghcr.io/intrastellarltd/crudapi-project:${{ github.sha }}" >> $GITHUB_ENV
-          echo "IMAGE_TAG_LATEST=ghcr.io/intrastellarltd/crudapi-project:latest" >> $GITHUB_ENV
+          echo "IMAGE_TAG=ghcr.io/hassanmunir/crudapi-project:${{ github.sha }}" >> $GITHUB_ENV
+          echo "IMAGE_TAG_LATEST=ghcr.io/hassanmunir/crudapi-project:latest" >> $GITHUB_ENV
 
       - name: Build Docker Image
         run: |
@@ -81,12 +81,12 @@ jobs:
       - name: Scan image
         uses: anchore/scan-action@v6
         with:
-          image: "ghcr.io/intrastellarltd/crudapi-project:latest"
+          image: "ghcr.io/hassanmunir/crudapi-project:latest"
           fail-build: false
 
       - uses: anchore/sbom-action@v0
         with:
-          image: "ghcr.io/intrastellarltd/crudapi-project:latest"
+          image: "ghcr.io/hassanmunir/crudapi-project:latest"
 
       - name: Push Docker Image to GHCR
         run: |
