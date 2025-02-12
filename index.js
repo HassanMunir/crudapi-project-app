@@ -19,7 +19,7 @@ module.exports = app;
 if (require.main === module) {
   mongoose
     .connect(
-      "mongodb+srv://nauman:yMOMB02dD69UOz0N@nodejscluster-project.vsdzo.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
+      "mongodb+srv://${{ secrets.MONGODB_USERNAME }}:${{ secrets.MONGODB_PASSWORD }}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
     )
     .then(() => {
       console.log("Connected to database!");

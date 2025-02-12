@@ -9,7 +9,7 @@ describe("Product API Unit Tests", () => {
 
   beforeAll(async () => {
     await mongoose.connect(
-      "mongodb+srv://nauman:yMOMB02dD69UOz0N@nodejscluster-project.vsdzo.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
+      "mongodb+srv://${{ secrets.MONGODB_USERNAME }}:${{ secrets.MONGODB_PASSWORD }}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
     );
     server = app.listen(3000);
   });
