@@ -3,12 +3,15 @@ const request = require("supertest");
 const app = require("../../index");
 const Product = require("../../models/product.model");
 
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+
 jest.setTimeout(60000);
 
 describe("Product API integration Tests", () => {
   beforeAll(async () => {
     await mongoose.connect(
-      "mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
+      "mongodb+srv://${username}:${password}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
     );
     await Product.deleteMany({});
     const count = await Product.countDocuments();

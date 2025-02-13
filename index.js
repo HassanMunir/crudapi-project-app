@@ -3,6 +3,9 @@ const mongoose = require("mongoose");
 const productRoute = require("./routes/product.route.js");
 const app = express();
 
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
@@ -19,7 +22,7 @@ module.exports = app;
 if (require.main === module) {
   mongoose
     .connect(
-      "mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
+      "mongodb+srv://${username}:${password}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
     )
     .then(() => {
       console.log("Connected to database!");

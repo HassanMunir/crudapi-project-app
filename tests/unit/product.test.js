@@ -2,6 +2,9 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../../index");
 
+const username = process.env.MONGODB_USERNAME;
+const password = process.env.MONGODB_PASSWORD;
+
 jest.setTimeout(60000);
 
 describe("Product API Unit Tests", () => {
@@ -9,7 +12,7 @@ describe("Product API Unit Tests", () => {
 
   beforeAll(async () => {
     await mongoose.connect(
-      "mongodb+srv://${process.env.MONGODB_USERNAME}:${process.env.MONGODB_PASSWORD}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
+      "mongodb+srv://${username}:${password}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
     );
     server = app.listen(3000);
   });
