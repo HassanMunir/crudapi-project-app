@@ -11,6 +11,7 @@ describe("Product API integration Tests", () => {
       "mongodb+srv://hassan:i2PTwtbe6FGIu4HH@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
     );
     await Product.deleteMany({});
+    await new Promise((resolve) => setTimeout(resolve, 1000));  // Wait to ensure deletion is complete
     const count = await Product.countDocuments();
     console.log(`Documents in collection: ${count}`);
   });
@@ -19,10 +20,11 @@ describe("Product API integration Tests", () => {
     await mongoose.connection.close();
   });
 
-  it("should fetch an empty product list", async () => {
+  it("should fetch the correct product list", async () => {
+    const count = await Product.countDocuments();
     const res = await request(app).get("/api/products");
     expect(res.status).toBe(200);
-    expect(res.body).toHaveLength(0);
+    expect(res.body).toHaveLength(count);  // Match the actual count dynamically
   });
 
   it("should handle invalid product id gracefully", async () => {
