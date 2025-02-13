@@ -11,7 +11,7 @@ jest.setTimeout(60000);
 describe("Product API integration Tests", () => {
   beforeAll(async () => {
     await mongoose.connect(
-      "mongodb+srv://${username}:${password}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project",
+      `mongodb+srv://${username}:${password}@nodejscluster-project.dus5d.mongodb.net/?retryWrites=true&w=majority&appName=nodejscluster-project`,
     );
     await Product.deleteMany({});
     const count = await Product.countDocuments();
