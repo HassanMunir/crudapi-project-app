@@ -2,9 +2,6 @@ const request = require("supertest");
 const mongoose = require("mongoose");
 const app = require("../../index");
 
-const username = process.env.MONGODB_USERNAME;
-const password = process.env.MONGODB_PASSWORD;
-
 jest.setTimeout(60000);
 
 describe("Product API Unit Tests", () => {

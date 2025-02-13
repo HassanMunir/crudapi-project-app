@@ -3,9 +3,6 @@ const request = require("supertest");
 const app = require("../../index");
 const Product = require("../../models/product.model");
 
-const username = process.env.MONGODB_USERNAME;
-const password = process.env.MONGODB_PASSWORD;
-
 jest.setTimeout(60000);
 
 describe("Product API integration Tests", () => {

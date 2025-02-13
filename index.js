@@ -3,9 +3,6 @@ const mongoose = require("mongoose");
 const productRoute = require("./routes/product.route.js");
 const app = express();
 
-const username = process.env.MONGODB_USERNAME;
-const password = process.env.MONGODB_PASSWORD;
-
 // middleware
 app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
